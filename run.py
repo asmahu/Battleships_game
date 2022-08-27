@@ -21,3 +21,8 @@ class Board:
         self.type = type
         self.guesses = []
         self.ships = []
+
+    def print(self):
+        # prints board
+        for row in self.board:
+            print("  ".join(row))
