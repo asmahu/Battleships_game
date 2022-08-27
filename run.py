@@ -192,3 +192,86 @@ any key to continue: \n")
             new_game()
         elif player_selection.lower() == "l":
             sys.exit("You have quit the game")
+
+
+def new_game():
+
+    """
+    Starts a new game. Sets the board size and number of ships, resets the
+    scores and initialises the boards.
+    """
+
+    print()
+    print(
+        """
+___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
+|__] |__|  |   |  |    |___ [__  |__| | |__] [__
+|__] |  |  |   |  |___ |___ ___] |  | | |    ___]\n
+"""
+    )
+    print("WELCOME TO THIS ULTIMATE BATTLESHIP GAME!!!\n")
+    print("You are going to play against CPU\n")
+    print("Introduction:\n")
+    print("I. Input board size. it must be between 4 - 12\n")
+    print("II. Input number of ships between 4 - 12\n")
+    print("III. Input your name to dispay on screen only \
+    characters can be used\n")
+    print("IV. Guess a row and column to hit CPU's ships.\n")
+    print("GOOD LUCK!!!\n")
+    print("The board size must be integers between 4 and 12\n")
+
+    # Get the size of board from the player and validate it
+    while True:
+        try:
+            size = int(input("Select the board size: \n"))
+            if size >= 4 and size <= 12:
+                break
+        except ValueError:
+            print("The board size must be an integer number\n")
+        else:
+            print("Out of range: Select an integer between 4 and 12\n")
+
+    print()
+    print("The number of ships must be integers between 4 and 12\n")
+
+    # Get the number of ships from the user and validate it
+    while True:
+        try:
+            number_ships = int(input("Seleect the number of ships: \n"))
+            if number_ships >= 4 and number_ships <= 12:
+                break
+        except ValueError:
+            print("The number of ships must be integer number\n")
+        else:
+            print("Out of range: Select an integer between 4 and 12\n")
+
+    scores["CPU"] = 0
+    scores["player"] = 0
+    print("~" * 37)
+    print(f"Board Size: {size}. Number of Ships: {number_ships}")
+    print("Top left corner is row: 0, col: 0")
+    print("~" * 37)
+
+    # Get the player's name
+    while True:
+        player_name = input('Please input your name: \n').capitalize()
+        if player_name.isalpha():
+            print()
+            break
+        else:
+            print("Invalid entry: players name must be an alphabet\n")
+
+    # Get board instances
+    CPU_board = Board(size, number_ships, "CPU", type="CPU")
+    player_board = Board(size, number_ships, player_name, type="player")
+
+    # Add ships to the board instances
+    for _ in range(number_ships):
+        setup_board(player_board)
+        setup_board(CPU_board)
+    print("~" * 35)
+    print_board(CPU_board, player_board)
+    play_game(CPU_board, player_board)
+
+
+new_game()
