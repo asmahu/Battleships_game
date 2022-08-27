@@ -12,3 +12,12 @@ class Board:
      the player's name and the player board or CPU
      contains methods to add ships, guesses and to print the board
     """
+
+    def __init__(self, size, number_ships, name, type):
+        self.size = size
+        self.board = [["." for x in range(size)] for y in range(size)]
+        self.number_ships = number_ships
+        self.name = name
+        self.type = type
+        self.guesses = []
+        self.ships = []
