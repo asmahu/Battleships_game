@@ -89,3 +89,25 @@ def setup_board(board):
     x = random_point(board.size)
     y = random_point(board.size)
     board.add_ship(x, y)
+
+    def make_guess(board):
+
+    """
+    Function to get validated player guess and add it to the guesses list
+    """
+
+    while True:
+        if board.type == "CPU":
+            x, y = random_point(board.size), random_point(board.size)
+            if validate_coordinates(x, y, board):
+                board.guesses.append((x, y))
+                return x, y
+                break
+
+        elif board.type == "player":
+            x = input("Guess a row: \n")
+            y = input("Guess a column: \n")
+            if validate_coordinates(x, y, board):
+                board.guesses.append((x, y))
+                return x, y
+                break
