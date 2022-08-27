@@ -30,3 +30,18 @@ class Board:
     def guess(self, x, y):
         # adds "x" at the selected coordinates
         self.board[x][y] = "x"
+
+         # adds "*" if selected coordinates hits a target
+        if (x, y) in self.ships:
+            self.board[x][y] = "*"
+            return "Hit"
+        else:
+            return "Miss"
+
+    def add_ship(self, x, y, type="CPU"):
+        if len(self.ships) >= self.number_ships:
+            print("Error: you cannot add any more ships!")
+        else:
+            self.ships.append((x, y))
+            if self.type == "player":
+                self.board[x][y] = "#"
