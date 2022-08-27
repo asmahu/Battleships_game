@@ -111,3 +111,29 @@ def setup_board(board):
                 board.guesses.append((x, y))
                 return x, y
                 break
+
+
+            def scores_board(board):
+
+    """
+    Prints the score dashboard status after each round
+    """
+
+    print("~" * 35)
+    print("After this round, the scores are:")
+    print(f"{board.name}: {scores['player']} CPU: {scores['CPU']}")
+    print("~" * 35)
+
+
+def print_board(CPU_board, player_board):
+
+    """
+    Prints the player's board and the CPU's board
+    """
+
+    print(f"{player_board.name}'s Board:")
+    player_board.print()
+    print()
+    print("CPU's Board:")
+    CPU_board.print()
+    print("~" * 35)
