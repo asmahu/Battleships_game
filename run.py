@@ -116,7 +116,7 @@ def setup_board(board):
             def scores_board(board):
 
     """
-    Prints the score dashboard status after each round
+    Prints the score board status after each round
     """
 
     print("~" * 35)
@@ -137,3 +137,16 @@ def print_board(CPU_board, player_board):
     print("CPU's Board:")
     CPU_board.print()
     print("~" * 35)
+
+    def winner(scores, CPU_board, player_board):
+
+    """
+    function to check who wins and display the result message
+    """
+
+    if scores["player"] == player_board.number_ships:
+        print("GAME OVER!!")
+        print(f"Well done {player_board.name}!! You are the winner")
+    elif scores['CPU'] == player_board.number_ships:
+        print("GAME OVER!!")
+        print(f"Sorry, {player_board.name}!! You lost to the CPU")
