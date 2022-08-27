@@ -48,7 +48,33 @@ class Board:
 
     def random_point(size):
 
+        """
+        Helper function to return a random integer between o and size
+        """
+        return randint(0, size - 1)
+
+
+    def validate_coordinates(x, y, board):
+
     """
-    Helper function to return a random integer between o and size
+    Function to validate coordinate inputs from users
     """
-    return randint(0, size - 1)
+
+    try:
+        x, y = int(x), int(y)
+        board.board[x][y] in board.board
+
+    except IndexError:
+        print("Invalid input: row and column\
+must be an integer between 0 - {board.size - 1} \n")
+        return False
+
+    except ValueError:
+        print("Invalid input: sorry, only integer numbers are allowed.\n")
+        return False
+
+    finally:
+        if (x, y) in board.guesses:
+            print("Boat does not fit. please input different coordinates!!!\n")
+            return False
+    return True
