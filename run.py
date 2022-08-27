@@ -4,7 +4,7 @@ import sys
 scores = {'CPU': 0, 'player': 0}
 
 
-# Board class adopted and modified from the CI's battleship tutorial
+# Board class added from code institute tutorial
 class Board:
 
     """
@@ -31,7 +31,7 @@ class Board:
         # adds "x" at the selected coordinates
         self.board[x][y] = "x"
 
-         # adds "*" if selected coordinates hits a target
+        # adds "*" if selected coordinates hits a target
         if (x, y) in self.ships:
             self.board[x][y] = "*"
             return "Hit"
@@ -46,15 +46,16 @@ class Board:
             if self.type == "player":
                 self.board[x][y] = "#"
 
-    def random_point(size):
 
-        """
-        Helper function to return a random integer between o and size
-        """
-        return randint(0, size - 1)
+def random_point(size):
+
+    """
+    Helper function to return a random integer between o and size
+    """
+    return randint(0, size - 1)
 
 
-    def validate_coordinates(x, y, board):
+def validate_coordinates(x, y, board):
 
     """
     Function to validate coordinate inputs from users
@@ -90,7 +91,8 @@ def setup_board(board):
     y = random_point(board.size)
     board.add_ship(x, y)
 
-    def make_guess(board):
+
+def make_guess(board):
 
     """
     Function to get validated player guess and add it to the guesses list
@@ -113,7 +115,7 @@ def setup_board(board):
                 break
 
 
-            def scores_board(board):
+def scores_board(board):
 
     """
     Prints the score board status after each round
@@ -138,7 +140,8 @@ def print_board(CPU_board, player_board):
     CPU_board.print()
     print("~" * 35)
 
-    def winner(scores, CPU_board, player_board):
+
+def winner(scores, CPU_board, player_board):
 
     """
     function to check who wins and display the result message
