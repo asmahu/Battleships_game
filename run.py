@@ -26,3 +26,7 @@ class Board:
         # prints board
         for row in self.board:
             print("  ".join(row))
+
+    def guess(self, x, y):
+        # adds "x" at the selected coordinates
+        self.board[x][y] = "x"
