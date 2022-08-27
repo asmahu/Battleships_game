@@ -150,3 +150,45 @@ def print_board(CPU_board, player_board):
     elif scores['CPU'] == player_board.number_ships:
         print("GAME OVER!!")
         print(f"Sorry, {player_board.name}!! You lost to the CPU")
+
+
+def play_game(CPU_board, player_board):
+
+    """
+    Function to start playing game 
+    """
+
+    while True:
+        # Get the player's guess and setup CPU's board
+        x, y = make_guess(player_board)
+        x, y = int(x), int(y)
+        player_board.guesses.append((x, y))
+        print(f"Player guessed: {x, y}")
+        if CPU_board.guess(x, y) == "Hit":
+            print("PLAYER HIT!")
+            scores['player'] += 1
+        elif CPU_board.guess(x, y) == "Miss":
+            print("Player missed this time")
+
+        # Get CPU's guess and setup player's board
+        x, y = make_guess(CPU_board)
+        CPU_board.guesses.append((x, y))
+        print(f"CPU guessed: {x, y}")
+        if player_board.guess(int(x), int(y)) == "Hit":
+            print("The CPU HIT!")
+            scores["CPU"] += 1
+        elif player_board.guess(x, y) == "Miss":
+            print("CPU missed this time")
+
+        scores_Area(player_board)
+        print_board(CPU_board, player_board)
+        winner(scores, CPU_board, player_board)
+
+        # Get user's feedback to continue or to quit
+        player_selection = input("Enter 'l' to leave, 'n' for starting new game and \
+any key to continue: \n")
+
+        if player_selection.lower() == "n":
+            new_game()
+        elif player_selection.lower() == "l":
+            sys.exit("You have quit the game")
