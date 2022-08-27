@@ -78,3 +78,14 @@ must be an integer between 0 - {board.size - 1} \n")
             print("Boat does not fit. please input different coordinates!!!\n")
             return False
     return True
+
+
+def setup_board(board):
+
+    """
+    Function to add ships to the board's ships list
+    """
+
+    x = random_point(board.size)
+    y = random_point(board.size)
+    board.add_ship(x, y)
