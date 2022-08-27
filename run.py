@@ -4,7 +4,7 @@ import sys
 scores = {'CPU': 0, 'player': 0}
 
 
-# Board class added from code institute tutorial
+# Board class added from CI tutorial
 class Board:
 
     """
@@ -66,8 +66,8 @@ def validate_coordinates(x, y, board):
         board.board[x][y] in board.board
 
     except IndexError:
-        print("Invalid input: row and column\
-must be an integer between 0 - {board.size - 1} \n")
+        print(f"Invalid input: row and column\
+must be an integer between 0 - {board.size - 1}\n")
         return False
 
     except ValueError:
@@ -108,14 +108,14 @@ def make_guess(board):
 
         elif board.type == "player":
             x = input("Guess a row: \n")
-            y = input("Guess a column: \n")
+            y = input("Guess a column:\n ")
             if validate_coordinates(x, y, board):
                 board.guesses.append((x, y))
                 return x, y
                 break
 
 
-def scores_board(board):
+def scores_Area(board):
 
     """
     Prints the score board status after each round
@@ -158,7 +158,9 @@ def winner(scores, CPU_board, player_board):
 def play_game(CPU_board, player_board):
 
     """
-    Function to start playing game 
+    
+    Function to start playing game
+     
     """
 
     while True:
@@ -188,8 +190,9 @@ def play_game(CPU_board, player_board):
         winner(scores, CPU_board, player_board)
 
         # Get user's feedback to continue or to quit
-        player_selection = input("Enter 'l' to leave, 'n' for starting new game and \
-any key to continue: \n")
+
+        player_selection = input("Enter 'l' to leave, 'n' for starting \
+ new game and any key to continue: \n")
 
         if player_selection.lower() == "n":
             new_game()
@@ -224,6 +227,7 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
     print("The board size must be integers between 4 and 12\n")
 
     # Get the size of board from the player and validate it
+
     while True:
         try:
             size = int(input("Select the board size: \n"))
@@ -257,12 +261,12 @@ ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____
 
     # Get the player's name
     while True:
-        player_name = input('Please input your name: \n').capitalize()
+        player_name = input('Please input your name:\n ').capitalize()
         if player_name.isalpha():
             print()
             break
         else:
-            print("Invalid entry: players name must be an alphabet\n")
+            print("Invalid entry: players name must be an alphabet")
 
     # Get board instances
     CPU_board = Board(size, number_ships, "CPU", type="CPU")
