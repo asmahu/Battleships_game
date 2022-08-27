@@ -66,7 +66,7 @@ def validate_coordinates(x, y, board):
         board.board[x][y] in board.board
 
     except IndexError:
-        print(f"Invalid input: row and column\
+        print("Invalid input: row and column\
 must be an integer between 0 - {board.size - 1}\n")
         return False
 
@@ -158,13 +158,13 @@ def winner(scores, CPU_board, player_board):
 def play_game(CPU_board, player_board):
 
     """
-    
+
     Function to start playing game
      
     """
 
     while True:
-        # Get the player's guess and setup CPU's board
+        # Get the player's guess and setup CPU's board3
         x, y = make_guess(player_board)
         x, y = int(x), int(y)
         player_board.guesses.append((x, y))
